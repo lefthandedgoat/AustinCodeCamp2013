@@ -9,10 +9,12 @@ hello "Chris"
 let people = ["Chris"; "Marcos"; "Andy"]
 
 List.iter hello people
-List.iter hello (List.map (fun (person:string) -> person.ToUpper()) (List.sort people))
-
 //pipe forward makes your life easier
 people |> List.iter hello
+
+/////////////
+List.iter hello (List.map (fun (person:string) -> person.ToUpper()) (List.sort people))
+
 people 
 |> List.map (fun person -> person.ToUpper())
 |> List.sort
@@ -75,6 +77,34 @@ peopleAndAges
 
 
 
+
+
+//pattern matching
+let determineAgeGroup age =
+    if age < 19 then
+        "minor"
+    elif age < 66 then
+        "adult"
+    else "senior"
+
+let determineAgeGroup2 age =
+    match age with
+    | _ when age < 19 -> "minor"
+    | _ when age < 66 -> "adult"
+    | _ -> "senior"
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Discriminated Union
 type role =    
     | Developer
@@ -103,9 +133,16 @@ peopleAndRoles |> List.iter about
 
 
 
+
+
+
+
 //Records
 type PersonAndRole = { Name : string; Role : role}
-let peopleAndRolesRecord = [{ Name = "Chris"; Role = QA }; { Name = "Marcos"; Role = Manager(3) }; { Name = "Andy"; Role = Developer}]
+let peopleAndRolesRecord = 
+    [{ Name = "Chris"; Role = QA }; 
+    { Name = "Marcos"; Role = Manager(3) }; 
+    { Name = "Andy"; Role = Developer}]
 
 let about2 person =
     match person with
@@ -116,6 +153,7 @@ let about2 person =
 peopleAndRolesRecord |> List.iter about2
 
 peopleAndRolesRecord 
+|> List.sortBy (fun p -> p.Name) 
 |> List.map (fun p -> (p.Name, p.Role))
 |> List.iter about
 
