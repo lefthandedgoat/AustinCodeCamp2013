@@ -38,3 +38,4 @@ files
 
 sw.Stop()
 printfn "%i" sw.ElapsedMilliseconds
+System.Console.ReadKey()
