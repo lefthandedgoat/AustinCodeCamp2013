@@ -15,6 +15,14 @@ people |> List.iter hello
 /////////////
 List.iter hello (List.map (fun (person:string) -> person.ToUpper()) (List.sort people))
 
+
+/////or
+let sorted = List.sort people
+let uppered = List.map (fun (person:string) -> person.ToUpper()) sorted
+List.iter hello uppered
+
+
+///or with pipes
 people 
 |> List.map (fun person -> person.ToUpper())
 |> List.sort
