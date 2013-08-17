@@ -165,4 +165,15 @@ peopleAndRolesRecord
 |> List.map (fun p -> (p.Name, p.Role))
 |> List.iter about
 
+///////////
+type person = { FirstName: string; LastName: string }
+
+let sue = { FirstName = "Sue"; LastName = "DeAspiring"}
+let bob = { FirstName = "bob"; LastName = "McAwesome"}
+
+let getMarried groom bride =
+    { groom with FirstName = bride.FirstName}
+
+printfn "%s's new last name is %s" sue.FirstName (getMarried bob sue).LastName
+
 System.Console.ReadKey()
