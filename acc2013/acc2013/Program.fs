@@ -26,7 +26,7 @@ let sw = Diagnostics.Stopwatch.StartNew()
 
 files 
 |> Array.map read
-|> Array.fold(fun accumulatedBook book -> accumulatedBook + book) String.Empty
+|> fun books -> String.Join(" ", books)
 |> fun combined -> combined.Split(' ')
 |> Seq.countBy id
 |> Seq.sortBy (fun (word, count) -> count)
