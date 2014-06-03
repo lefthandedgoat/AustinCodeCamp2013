@@ -168,11 +168,11 @@ peopleAndRolesRecord
 ///////////
 type person = { FirstName: string; LastName: string }
 
-let sue = { FirstName = "Sue"; LastName = "DeAspiring"}
-let bob = { FirstName = "bob"; LastName = "McAwesome"}
+let sue = { FirstName = "Sue"; LastName = "Johnson"}
+let bob = { FirstName = "bob"; LastName = "Smith"}
 
 let getMarried groom bride =
-    { groom with FirstName = bride.FirstName}
+    { bride with LastName = groom.LastName }
 
 printfn "%s's new last name is %s" sue.FirstName (getMarried bob sue).LastName
 
